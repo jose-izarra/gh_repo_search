@@ -104,7 +104,7 @@ export default function Hero({
                                     </span>
                                 )}
                             </div>
-                            <p className="text-gray-500 text-lg leading-8 max-w-xl text-center sm:text-left mt-4 sm:mt-0">
+                            <p className="text-gray-500 text-base lg:text-lg leading-8 max-w-xl text-center sm:text-left mt-4 lg:mt-0">
                                 {user?.bio}
                             </p>
 

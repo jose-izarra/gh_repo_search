@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import SearchResults from "./SearchResults"
 import { ProfileResult } from "@/lib/types"
-
+import { useRouter } from "next/navigation"
 
 
 
@@ -11,13 +11,19 @@ export default function SearchProfile() {
 
     const [search, setSearch] = useState("")
     const [results, setResults] = useState<ProfileResult[]>([])
+    const router = useRouter()
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
 
     }
 
-    const handleSearch = () => {
-        console.log(search)
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if (!search) return;
+
+        // go to the first result's profile
+        router.push("/" + results[0].login)
     }
 
     useEffect(() => {
@@ -27,10 +33,11 @@ export default function SearchProfile() {
             const response = await fetch(`/api/github?search=${search}&type=users`, {
                 method: "GET",
             })
-            // const data = await response.json()
+
             const data = await response.json()
-            console.log(data)
-            setResults(data.items)
+
+            // only update results if there are users for that query
+            if (data) setResults(data.items)
         }
 
         // only fetch if there user has typed something
@@ -42,23 +49,28 @@ export default function SearchProfile() {
     return (
         // this div needs to be a relative for SearchResults to work
         <div className="flex justify-between gap-x-4 w-full max-w-5xl border border-gray-300 rounded-md p-2 relative">
-            <input
-                type="text"
-                placeholder="Search for a profile"
-                className="w-full px-2 py-1 focus:outline-none"
-                value={search}
-                onChange={handleChange}
-                />
-            <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                onClick={handleSearch}
+            <form
+                onSubmit={handleSubmit}
+                className="flex justify-between gap-x-4 w-full "
                 >
-                Search
-            </button>
-            {results.length > 0 && (
+                <input
+                    type="text"
+                    placeholder="Search for a profile"
+                    className="w-full px-2 py-1 focus:outline-none"
+                    value={search}
+                    onChange={handleChange}
+                    />
+                <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    type="submit"
+                    >
+                    Search
+                </button>
+
+            </form>
+            {results && results.length > 0 && (
                 <SearchResults
                     results={results}
-                    type="profile"
                 />
             )}
         </div>

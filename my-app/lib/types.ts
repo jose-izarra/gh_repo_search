@@ -25,6 +25,8 @@ export interface RepoResult {
     watchers_count: number;
     language: string;
     updated_at: string;
+    visibility: string;
+    forks_count: number;
 }
 
 
@@ -90,4 +92,11 @@ export interface User {
     followers: number;
     following: number;
     created_at: string;
+}
+
+
+export interface Filter {
+    type: string | null;
+    language: string | null;
+    sort: string | null;
 }

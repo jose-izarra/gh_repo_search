@@ -64,7 +64,7 @@ body {
 
 @layer components {
   .standardPx {
-    @apply px-[1.5rem] sm:px-[5rem]
+    @apply px-[1.5rem] lg:px-[5rem]
   }
 }
 
