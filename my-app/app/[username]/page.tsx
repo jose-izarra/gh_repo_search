@@ -6,7 +6,7 @@ import Hero from "./features/Hero"
 export default async function Page({
     params
 }: {
-    params: { username: string }
+    params: Promise<{ username: string }>
 }) {
     const { username } = await params as { username: string }
 
