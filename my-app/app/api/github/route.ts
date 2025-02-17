@@ -8,8 +8,12 @@ export async function GET(req: NextRequest) {
 
     try {
         // if the username is provided, we need to fetch the repositories for the user
+
         const username = req.nextUrl.searchParams.get("username") ?? undefined
         const search = req.nextUrl.searchParams.get("search")
+
+
+
 
         let url = username ? `https://api.github.com/users/${username}/repos` : `https://api.github.com/search/users?q=${search}`
         const response = await fetch(url, {

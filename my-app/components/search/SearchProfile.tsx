@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import SearchResults from "./SearchResults"
-import { Result } from "@/lib/types"
+import { ProfileResult } from "@/lib/types"
 
 
 
@@ -10,7 +10,7 @@ export default function SearchProfile() {
 
 
     const [search, setSearch] = useState("")
-    const [results, setResults] = useState<Result[]>([])
+    const [results, setResults] = useState<ProfileResult[]>([])
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
 
@@ -38,6 +38,7 @@ export default function SearchProfile() {
         else setResults([])
     }, [search])
 
+
     return (
         // this div needs to be a relative for SearchResults to work
         <div className="flex justify-between gap-x-4 w-full max-w-5xl border border-gray-300 rounded-md p-2 relative">
@@ -57,6 +58,7 @@ export default function SearchProfile() {
             {results.length > 0 && (
                 <SearchResults
                     results={results}
+                    type="profile"
                 />
             )}
         </div>

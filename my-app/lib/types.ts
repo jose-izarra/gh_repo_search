@@ -1,6 +1,6 @@
 
 
-export interface Result {
+export interface ProfileResult {
     id: number;
     login: string;
     avatar_url: string;
@@ -13,6 +13,18 @@ export interface Result {
     type: string;
     url: string;
     user_view_type: string;
+}
+
+export interface RepoResult {
+    id: number;
+    name: string;
+    full_name: string;
+    description: string | null;
+    forks: number;
+    stargazers_count: number;
+    watchers_count: number;
+    language: string;
+    updated_at: string;
 }
 
 
@@ -55,4 +67,27 @@ export interface Repo {
     open_issues: number;
     watchers: number;
     default_branch: string;
+}
+
+
+
+export interface User {
+    login: string;
+    id: number;
+    avatar_url: string;
+    type: string;
+    user_view_type: string;
+    site_admin: boolean;
+    name: string | null;
+    company: string | null;
+    blog: string;
+    location: string | null;
+    email: string | null;
+    hireable: boolean | null;
+    bio: string | null;
+    twitter_username: string | null;
+    public_repos: number;
+    followers: number;
+    following: number;
+    created_at: string;
 }
