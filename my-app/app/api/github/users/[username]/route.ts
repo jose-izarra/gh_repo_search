@@ -23,8 +23,13 @@ export async function GET(
                 "X-GitHub-Api-Version": "2022-11-28"
             }
         })
+
+        // If the user is not found, return a 404 error
+        if (response.status === 404) return NextResponse.json({ error: "User not found" }, { status: 404 });
+
         const data = await response.json()
-        console.log(data)
+
+
         const user = {
             login: data.login,
             id: data.id,

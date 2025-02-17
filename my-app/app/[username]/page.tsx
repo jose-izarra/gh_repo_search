@@ -11,7 +11,7 @@ export default async function Page({
     const { username } = await params as { username: string }
 
     return (
-        <main className="min-h-screen flex flex-col gap-4 items-center sm:items-start standardPx">
+        <main className="min-h-screen flex flex-col gap-4 items-center sm:items-start standardPx  mt-16">
             <Hero username={username} />
             <SearchRepo
                 username={username}

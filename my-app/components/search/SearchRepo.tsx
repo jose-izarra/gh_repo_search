@@ -4,6 +4,8 @@ import SearchResults from "./SearchResults"
 import { RepoResult, Repo } from "@/lib/types"
 import { formatDistanceToNow } from "date-fns"
 import { ChevronDown } from "lucide-react"
+import { notFound } from "next/navigation"
+
 interface Props {
     username: string
 }
@@ -50,6 +52,9 @@ export default function SearchRepo({
             const response = await fetch(`/api/github?username=${username}`, {
                 method: "GET",
             })
+            if (response.status === 404) {
+                notFound()
+            }
             const json = await response.json()
             const data = json.map((repo: Repo) => {
                 return {
