@@ -18,8 +18,6 @@ interface Props {
 export default function Results({
     results,
 }: Props) {
-
-
     return (
         <ul
             className="flex flex-col gap-y-2 border border-gray-300 rounded-md p-2 absolute top-[105%] left-0 w-full px-1 "

@@ -1,13 +1,10 @@
 "use client"
-import { useState } from "react"
 import { Repo } from "@/lib/types"
-import { Filter } from "@/lib/types"
 import { ChevronDown } from "lucide-react"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
