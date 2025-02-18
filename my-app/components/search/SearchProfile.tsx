@@ -1,21 +1,28 @@
 "use client"
 import { useState, useEffect } from "react"
-import SearchResults from "./SearchResults"
-import { ProfileResult } from "@/lib/types"
+import Results from "./Results"
+import { Result } from "@/lib/types"
 import { useRouter } from "next/navigation"
 
 
+
+
+/*
+    This is the search bar for the profile page.
+    It handles all the logic needed for the search bar to function and it is a
+    parent component for the Results component which renders the search items.
+*/
 
 export default function SearchProfile() {
 
 
     const [search, setSearch] = useState("")
-    const [results, setResults] = useState<ProfileResult[]>([])
+    const [results, setResults] = useState<Result[]>([])
     const router = useRouter()
 
+    // anytime the search query changes, update the search state
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
-
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,8 +34,6 @@ export default function SearchProfile() {
     }
 
     useEffect(() => {
-        // everytime the search query changes, make a call to the github api to fetch results
-
         const fetchProfile = async () => {
             const response = await fetch(`/api/github?search=${search}&type=users`, {
                 method: "GET",
@@ -43,11 +48,11 @@ export default function SearchProfile() {
         // only fetch if there user has typed something
         if (search) fetchProfile()
         else setResults([])
-    }, [search])
+    }, [search]) // only run when the search changes
 
 
     return (
-        // this div needs to be a relative for SearchResults to work
+        // this div needs to be a relative for Results to work
         <div className="flex justify-between gap-x-4 w-full max-w-5xl border border-gray-300 rounded-md p-2 relative">
             <form
                 onSubmit={handleSubmit}
@@ -69,7 +74,7 @@ export default function SearchProfile() {
 
             </form>
             {results && results.length > 0 && (
-                <SearchResults
+                <Results
                     results={results}
                 />
             )}

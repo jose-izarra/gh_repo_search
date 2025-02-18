@@ -2,6 +2,16 @@
 
 import Hero from "./features/Hero"
 import DisplayRepositories from "./features/DisplayRepositories"
+
+
+
+/*
+    This is the page for the user's profile.
+    This is a dynamic page that fetches the user's information according to the username in the url.
+    It works just like githubs website, where you can find a user's profile and repositories
+    by typing the username in the url.
+*/
+
 export default async function Page({
     params
 }: {

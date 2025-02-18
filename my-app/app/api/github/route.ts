@@ -2,6 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 
+/*
+    This is the route for the github api.
+    It is used to fetch the users and repositories for the app.
+    It uses the github token to authenticate the request to the github api.
+    It has two main functionalities:
+    - Fetch the users for a given search query
+    - Fetch the repositories for a given username
+*/
 
 export async function GET(req: NextRequest) {
 

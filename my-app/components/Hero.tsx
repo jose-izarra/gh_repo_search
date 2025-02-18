@@ -1,5 +1,12 @@
 import SearchProfile from "./search/SearchProfile";
 
+
+
+/*
+    This is the hero section of the app. It is the first thing the user sees when they land on the page.
+    It contains a search bar to search for a profile and a button to search for repositories.
+*/
+
 export default function Hero() {
 
     return (

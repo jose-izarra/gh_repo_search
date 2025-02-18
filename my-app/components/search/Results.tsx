@@ -1,15 +1,21 @@
 "use client"
 import SearchItem from "./SearchItem"
-import { ProfileResult, RepoResult } from "@/lib/types"
+import { Result } from "@/lib/types"
 
-// type to define the relevant data from the github api
 
 
 interface Props {
-    results: ProfileResult[] | RepoResult[]
+    results: Result[]
 }
 
-export default function SearchResults({
+
+
+/*
+    This is the component for displaying the search results.
+    It is used in the SearchProfile component.
+*/
+
+export default function Results({
     results,
 }: Props) {
 

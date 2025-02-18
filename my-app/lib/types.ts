@@ -1,6 +1,6 @@
 
 
-export interface ProfileResult {
+export interface Result {
     id: number;
     login: string;
     avatar_url: string;
@@ -13,20 +13,6 @@ export interface ProfileResult {
     type: string;
     url: string;
     user_view_type: string;
-}
-
-export interface RepoResult {
-    id: number;
-    name: string;
-    full_name: string;
-    description: string | null;
-    forks: number;
-    stargazers_count: number;
-    watchers_count: number;
-    language: string;
-    updated_at: string;
-    visibility: string;
-    forks_count: number;
 }
 
 
@@ -96,7 +82,6 @@ export interface User {
 
 
 export interface Filter {
-    type: string | null;
     language: string | null;
     sort: string | null;
 }
