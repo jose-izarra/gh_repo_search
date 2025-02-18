@@ -6,7 +6,7 @@ Link: [Github Search](https://github-search-seven-alpha.vercel.app/)
 
 ## Stack
 
-- **Frontend**: NextJS 15, TailwindCSS
+- **Frontend**: NextJS 15, TailwindCSS, and Shadcn
 - **Testing**: Jest + React Testing Library
 - **CI/CD**: Github Actions
 - **Deployment**: Vercel
@@ -32,7 +32,7 @@ cd github-search/my-app
 npm install
 ```
 
-3. Rename the `.env.example` file to `.env.local` and add your GitHub token
+3. Rename the `.env.example` file in my-app to `.env.local` and add your GitHub token
 
 ```bash
 GITHUB_TOKEN=<your_token>
